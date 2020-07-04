@@ -3,43 +3,79 @@ package gb.homeworks;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println(calc(2, 3, 4, 5));
-        System.out.println(meth(0, 1));
-        numb (3);
-        System.out.println( negative(2));
-        greetings("Иванушка");
+        replaceValue();
+        fillValue();
+        changeValue();
+        fillDiagonalValue();
+        findMinMax();
     }
 
-    static int calc(int a, int b, int c, int d) {
+    public static void replaceValue()
+    {
+        int[] x= { 0, 0, 1, 0, 0, 1, 1, 0 };
+        for (int i = 0; i < x.length; i++) {
+            if (x[i] == 0) { x[i] = 1;
 
-        return a * (b + (c / d));
+            } else if (x[i] == 1) { x[i] = 0;
+
+            }System.out.print(x[i]);
+        } System.out.println();
     }
 
-    static boolean meth(int a1, int b1) {
+    public static void fillValue()
+    {
+        int [] y = new int [8];
 
-        return 10 >= a1 + b1 && a1 + b1 <= 20;
+        for (int i = 0; i < y.length; i++) {
+            y[i]= i*3;
+
+            System.out.print(y[i]);
+        } System.out.println();
+
     }
 
-    static void numb(int x) {
-        if (x >= 0) {
-            System.out.println("Число является положительным");
-        } else {
-            System.out.println("Число является отрицательным");
+    public static void changeValue()
+    {
+        float [] x = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
+
+        for ( int i = 0; i < x.length; i++){
+            if(x[i] < 6){
+                x[i]=x[i]*2;
+            }System.out.print(x[i]);
         }
     }
-
-    static boolean negative (int n) {
-        if (n < 0) {
-            return true;
+    public static void fillDiagonalValue() {
+        int[][] d = new int[4][4];
+        for (int i = 0; i < d.length; i++) {
+            for (int j = 0; j < d[i].length; j++) {
+                if (i == j || i == 3 - j) {
+                    d[i][j] = 1;
+                }
+                System.out.print(d[i][j]);
+            }
+            System.out.println();
         }
-        return false;
     }
-    static void greetings(String name) {
-        System.out.println("Привет, " + name + "!");
+    public static void findMinMax()
+    {
+        float []m = {12,0,4,-5,2,4,0, -5.5f,17};
+        float max=0;
+        float min=0;
+        for (int i = 0; i<m.length; i++){
+            if (m[i]<=min) {
+                min= m[i];
+            } else if (m[i]>=max){
+                max = m[i];
+            }
+        }System.out.println("Наименьшее число в массиве " + min +" и наибольшее " + max);
     }
 
 
-}
+    }
+
+
+
+
 
 
 
