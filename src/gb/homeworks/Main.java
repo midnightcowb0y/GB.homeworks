@@ -1,77 +1,63 @@
 package gb.homeworks;
 
+import java.util.Scanner;
+
 public class Main {
 
-    public static void main(String[] args) {
-        replaceValue();
-        fillValue();
-        changeValue();
-        fillDiagonalValue();
-        findMinMax();
-    }
+        private static Scanner scanner = new Scanner(System.in);
 
-    public static void replaceValue()
-    {
-        int[] x= { 0, 0, 1, 0, 0, 1, 1, 0 };
-        for (int i = 0; i < x.length; i++) {
-            if (x[i] == 0) { x[i] = 1;
-
-            } else if (x[i] == 1) { x[i] = 0;
-
-            }System.out.print(x[i]);
-        } System.out.println();
-    }
-
-    public static void fillValue()
-    {
-        int [] y = new int [8];
-
-        for (int i = 0; i < y.length; i++) {
-            y[i]= i*3;
-
-            System.out.print(y[i]);
-        } System.out.println();
-
-    }
-
-    public static void changeValue()
-    {
-        float [] x = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
-
-        for ( int i = 0; i < x.length; i++){
-            if(x[i] < 6){
-                x[i]=x[i]*2;
-            }System.out.print(x[i]);
+        public static void main(String[] args)
+        {
+                System.out.println("Ваша задача угадать число");
+                guessNumber(9,3);
+                scanner.close();
         }
-    }
-    public static void fillDiagonalValue() {
-        int[][] d = new int[4][4];
-        for (int i = 0; i < d.length; i++) {
-            for (int j = 0; j < d[i].length; j++) {
-                if (i == j || i == 3 - j) {
-                    d[i][j] = 1;
+
+          static  void guessNumber( int range, int attempts)
+        {
+                int number = (int) (Math.random() * range);
+                int i;
+                for (i=1; i<= attempts; i++)
+                {
+                        System.out.println("Введите число от 0 до " + range);
+                        int input_number = scanner.nextInt();
+                        if (input_number == number)
+                        {
+                                System.out.println("Вы угадали!");
+                                tryOneMoreTime();
+                                break;
+                        } else if (input_number > number)
+                        {
+                                System.out.println("Загаданное число меньше");
+                        } else
+                        {
+                                System.out.println("Загаданное число больше");
+                        } if (i == attempts)
+                {
+                        System.out.println("Вы проиграли!");
+                        tryOneMoreTime();
+                        break;
                 }
-                System.out.print(d[i][j]);
-            }
-            System.out.println();
+                }
         }
-    }
-    public static void findMinMax()
-    {
-        float []m = {12,0,4,-5,2,4,0, -5.5f,17};
-        float max=0;
-        float min=0;
-        for (int i = 0; i<m.length; i++){
-            if (m[i]<=min) {
-                min= m[i];
-            } else if (m[i]>=max){
-                max = m[i];
-            }
-        }System.out.println("Наименьшее число в массиве " + min +" и наибольшее " + max);
-    }
+        static void tryOneMoreTime()
+        {
+                System.out.println("Повторить игру еще раз? Для продолжения введите 1, для выхода - любое другое число");
+                int input_number = scanner.nextInt();
+                if (input_number == 1)
+                {
+                        guessNumber(9,3);
+                }
 
 
-    }
+        }
+
+}
+
+
+
+
+
 
 
 
