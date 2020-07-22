@@ -21,9 +21,9 @@ public class Employee {
 
 
 
-   public String getInfo()
+   public void getInfo()
     {
-        return "Employee: " + name+ "; Position: " + position + "; Email: " + email + "; Phone Number: " + phoneNumber+ "; Salary: " + salary + "; Age: " + age;
+        System.out.println("Employee: " + name+ "; Position: " + position + "; Email: " + email + "; Phone Number: " + phoneNumber+ "; Salary: " + salary + "; Age: " + age);
     }
 
 
