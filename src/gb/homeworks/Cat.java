@@ -1,15 +1,33 @@
 package gb.homeworks;
 
-public class Cat extends Animals
+public class Cat
 {
-    public Cat(float maxRunLength, float maxJumpHeight)
+    private String name;
+    private int appetite;
+    private boolean satiety;
+    public Cat(String name, int appetite)
     {
-        super(maxRunLength, 0, maxJumpHeight);
+        this.name = name;
+        this.appetite = appetite;
+    }
+    public void eat(Plate p)
+
+    { if ( p.food >= appetite)
+    {
+        p.decreaseFood(appetite);
+        satiety = true;
+    }
+    else
+    {
+        p.addFood();
+    }
     }
 
-    @Override
-    public void swim(float length)
+
+    public void printInfo()
     {
-        System.out.println("Cats can't swim!");
+        System.out.println("Cat's " + name + " satiety is: " + satiety);
     }
+
+
 }
